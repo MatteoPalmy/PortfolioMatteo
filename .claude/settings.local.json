@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(mv portfolio-tmp/.gitignore ./.gitignore)",
+      "Bash(rm -rf portfolio-tmp)",
+      "Bash(npx shadcn@latest *)",
+      "Bash(npx tsc *)",
+      "Bash(nohup npm run dev)",
+      "Bash(echo \"PID: $!\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(sips /Users/matteopalermo/1_Sito_Web/references/screencapture-richardekwonye-2026-07-12-01_08_09.png -c 2200 3024 --cropOffset 0 0 --out top.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight top.png)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import PIL; print\\('ok', PIL.__version__\\)\")",
+      "Bash(python3 *)",
+      "Bash(npm run *)",
+      "Bash([ -x \"$CHROME\" ])",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --screenshot=replica.png --window-size=1512,7500 --hide-scrollbars http://localhost:3000)",
+      "Bash(ls -la replica.png)",
+      "Bash(npx --yes playwright --version)",
+      "Read(//Users/matteopalermo/Library/Caches/**)",
+      "Bash(npx playwright *)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-matteopalermo-1-Sito-Web/759ff8b8-3c14-48e6-b646-7e5ed71c609e/scratchpad/verify.png --window-size=1440,2400 --hide-scrollbars http://localhost:3000)",
+      "Bash(perl -i -pe 'if \\($. == 139\\) { $_ = \"  const tape = Array.from\\({ length: 12 }, \\(\\) =>\\\\n    tapeItems.map\\(\\(item\\) => \\\\`\\\\${item} \\\\x{c2}\\\\x{b7} \\\\`\\).join\\(\\\\\"\\\\\"\\),\\\\n  \\).join\\(\\\\\"\\\\\"\\);\\\\n\"; }' src/app/page.tsx)",
+      "Bash(perl -i -pe 's/\"Matteo \"\\\\.repeat\\\\\\(6\\\\\\)/\"Matteo\\\\\\\\u00A0\".repeat\\(6\\)/; s/\"Palermo \"\\\\.repeat\\\\\\(6\\\\\\)/\"Palermo\\\\\\\\u00A0\".repeat\\(6\\)/' src/app/page.tsx)"
+    ]
+  }
+}
