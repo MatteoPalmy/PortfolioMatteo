@@ -123,7 +123,7 @@ components:
 
 **Creative North Star: "The Identity Manual"**
 
-The portfolio is not a page, it is a document: a Swiss typographic identity manual whose documented subject is the person. It refuses the dark hero and the card grid outright. The visitor's name is set once as an oversized cobalt wordmark — the specimen on the cover — and the rest of the site is title-blocks, numbered sections (01–04), spec lists, and framed plates, printed on warm paper. The 12-column grid is not a layout aid hidden in dev tools; it is drawn on every screen as load-bearing furniture, the way a manual shows its own construction lines.
+The portfolio is not a page, it is a document: a Swiss typographic identity manual whose documented subject is the person. It refuses the dark hero and the card grid outright. The visitor's name is set once as an oversized cobalt wordmark — the specimen on the cover — and the rest of the site is title-blocks, numbered sections (01–03), spec lists, and framed plates, printed on warm paper. The 12-column grid is not a layout aid hidden in dev tools; it is drawn on every screen as load-bearing furniture, the way a manual shows its own construction lines.
 
 The palette is disciplined to the point of austerity: warm paper, near-black ink, two warm greys, and exactly one chromatic colour — a single committed cobalt (#1B2BE0) that carries roughly a fifth of any screen and never more. Cobalt marks three things and nothing else: the wordmark, the load-bearing section rules, and the one live action (the email block). Everything is flat. There are no shadows, no gradients, no rounded corners, no cards. Depth is made only of lines — hairlines, ink rules, the 2px cobalt section rule, and the ever-present grid.
 
@@ -134,7 +134,7 @@ The one moment of motion is the wordmark composing itself letter by letter on lo
 - A 12-column grid (4 on mobile) drawn on every screen as permanent furniture
 - Totally flat: zero shadows, zero gradients, zero border-radius, zero cards
 - Cobalt restricted to the wordmark, section rules, and the single live email action
-- Numbered sections 01–04, mono spec-lists, framed plates with corner crop-marks
+- Numbered sections 01–03, mono spec-lists, framed plates with corner crop-marks
 - One animation only: the wordmark composes once on load
 
 ## Colors
@@ -169,7 +169,7 @@ A warm-neutral document palette with a single chromatic accent. Every neutral is
 
 ### Hierarchy
 - **Display** (700, `clamp(2.7rem, 13.5vw, 12rem)`, line-height 0.92, tracking -0.04em, uppercase, cobalt): the "MATTEO PALERMO" wordmark on the cover, set as two stacked words. The documented specimen; appears once.
-- **Headline** (600, `clamp(1.9rem, 4.6vw, 3.15rem)`, line-height 1.02, tracking tight, ink): section titles (`Profilo`, `Competenze`, `Lavori`, `Contatto`). The section number rides alongside as mono marginalia at 0.42em of the heading, in graphite, pulled into the left margin on `lg`.
+- **Headline** (600, `clamp(1.9rem, 4.6vw, 3.15rem)`, line-height 1.02, tracking tight, ink): section titles (`Profilo`, `Competenze`, `Contatto`). The section number rides alongside as mono marginalia at 0.42em of the heading, in graphite, pulled into the left margin on `lg`.
 - **Title** (600, ~`1.25rem` / `1.125rem`, tracking tight, ink): sub-headings inside sections — project titles, Competenze group names.
 - **Lead** (500, `clamp(1.1rem, 1.7vw, 1.35rem)`, line-height 1.55, ink): the opening paragraph of a section (the Profilo intro). Max ~58ch.
 - **Body** (400, `1rem`, line-height ~1.6, ink at 90% or muted): running prose. Max 46–58ch.
@@ -186,13 +186,13 @@ A warm-neutral document palette with a single chromatic accent. Every neutral is
 
 **The shell.** All content and the grid overlay share one container, `.manual-shell`: `width: 100%`, `max-width: 84rem`, centred, `padding-inline: clamp(1.25rem, 5vw, 4rem)`. Nothing sits outside it.
 
-**The visible grid.** `GridOverlay` renders a `fixed inset-0`, `pointer-events-none`, `z-0` layer holding a `.manual-shell` with `grid-cols-4 sm:grid-cols-12`; each column is a right-border in Grid colour, so the construction lines are on screen at all times. Page content sits at `z-10` above it. Sections lay out on `sm:grid-cols-12` and place their blocks with explicit `col-span` / `col-start` (e.g. Profilo prose `col-span-7`, plate `col-span-4 col-start-9`).
+**The visible grid.** `GridOverlay` renders a `fixed inset-0`, `pointer-events-none`, `z-0` layer holding a `.manual-shell` with `grid-cols-4 sm:grid-cols-12`; each column is a right-border in Grid colour, so the construction lines are on screen at all times. Page content sits at `z-10` above it. Sections lay out on `sm:grid-cols-12` and place their blocks with explicit `col-span` / `col-start` (e.g. Profilo prose `col-span-7` with its facts spec-list `col-span-4 col-start-9`, mirrored in Contatto).
 
 **Section structure.** Each `Section` opens with a top rule (2px solid cobalt normally; 1px dashed hairline-strong when `broken`), then `pt-10`, then the headline with its mono number, then a content well at `mt-8 sm:mt-10`, `px-1 sm:px-3`, `pb-20 sm:pb-24`. Sections carry `scroll-mt-24`.
 
 **The cover.** A full-height panel (`sm:min-h-[86svh]`), flex column, `justify-between`: document label + social row at top, wordmark + intro in the middle, spec-list + small email block at the bottom. Corner ticks are absolutely positioned over the whole panel.
 
-**The index rail.** `IndexRail` is `sticky top-0 z-40`, solid paper background, ink bottom hairline; chips `01–04` are real `#id` anchors. `html` has `scroll-behavior: smooth` and `scroll-padding-top: 5rem`.
+**The index rail.** `IndexRail` is `sticky top-0 z-40`, solid paper background, ink bottom hairline; chips `01–03` are real `#id` anchors. `html` has `scroll-behavior: smooth` and `scroll-padding-top: 5rem`.
 
 **Rhythm.** Tailwind's default scale, used sparsely: inline pads `px-1` (0.25rem) / `sm:px-3` (0.75rem), block gaps `gap-7`–`gap-10` (1.75–2.5rem), section top `pt-10` (2.5rem), section bottom `pb-20`–`pb-24` (5–6rem). Breakpoints are Tailwind defaults: `sm` 640px, `lg` 1024px.
 
@@ -227,16 +227,16 @@ State changes are structural, not lit: the email block and social icons invert t
 ## Components
 
 ### Index Rail (`IndexRail`)
-Character: the manual's table of contents, pinned to the top edge. No props. `sticky top-0 z-40`, solid paper background, ink bottom hairline. Chips are real `#profilo`/`#competenze`/`#lavori`/`#contatto` anchors, each a mono number (`01`) plus a sans label. Active chip is a filled cobalt block with paper text; inactive is a hairline outline with ink text and `hover:border-muted`. Active state is structural (fill vs. outline), not tonal. A scroll-spy computes the active entry against a line at 35% of viewport height and **defaults to entry 1**, so a filled tab is always visible — even on the cover before section 01. `transition-colors duration-300`.
+Character: the manual's table of contents, pinned to the top edge. No props. `sticky top-0 z-40`, solid paper background, ink bottom hairline. Chips are real `#profilo`/`#competenze`/`#contatto` anchors, each a mono number (`01`) plus a sans label. Active chip is a filled cobalt block with paper text; inactive is a hairline outline with ink text and `hover:border-muted`. Active state is structural (fill vs. outline), not tonal. A scroll-spy computes the active entry against a line at 35% of viewport height and **defaults to entry 1**, so a filled tab is always visible — even on the cover before section 01. `transition-colors duration-300`.
 
 ### Wordmark (`Wordmark`)
 Props: `{ id?: string }`. The documented specimen: "MATTEO PALERMO" as two stacked `block` spans, Familjen Grotesk 700, `clamp(2.7rem, 13.5vw, 12rem)`, line-height 0.92, letter-spacing -0.04em, uppercase, cobalt. Each visible letter is a `.wordmark-letter` span carrying `--i` (its index); the word is exposed to assistive tech via a single `sr-only` span while the animated letters are `aria-hidden`. Appears once, on the cover.
 
 ### Section (`Section`)
-Props: `{ id: string; n: string; title: string; broken?: boolean; children: ReactNode }`. Wraps a numbered section: top rule (2px solid cobalt, or 1px dashed hairline-strong when `broken`), `pt-10`, an `h2` headline (`clamp(1.9rem, 4.6vw, 3.15rem)`, semibold, tracking-tight, ink) with the section number `n` as mono graphite marginalia at `0.42em` (absolute in the left margin from `lg`), then a content well (`mt-8 sm:mt-10`, `px-1 sm:px-3`, `pb-20 sm:pb-24`). `scroll-mt-24`, `z-10`. `broken` is driven by real emptiness (`progetti.length === 0`), not styling whim.
+Props: `{ id: string; n: string; title: string; broken?: boolean; children: ReactNode }`. Wraps a numbered section: top rule (2px solid cobalt, or 1px dashed hairline-strong when `broken`), `pt-10`, an `h2` headline (`clamp(1.9rem, 4.6vw, 3.15rem)`, semibold, tracking-tight, ink) with the section number `n` as mono graphite marginalia at `0.42em` (absolute in the left margin from `lg`), then a content well (`mt-8 sm:mt-10`, `px-1 sm:px-3`, `pb-20 sm:pb-24`). `scroll-mt-24`, `z-10`. `broken` draws the dashed rule for a curated empty state and is driven by real emptiness, not styling whim; no section ships it today (the Lavori section that used it was removed 2026-09-10).
 
 ### Spec List (`SpecList`)
-Props: `{ rows: [string, string][]; className?: string }`. A technical drawing's title-block: a `<dl>` in Geist Mono `0.72rem`, tracking 0.04em, muted. Each row is `flex gap-5`, `border-b border-hairline`, `px-0.5 py-3` (last row loses its border). `dt` is uppercase graphite, `w-20 sm:w-24 shrink-0`; `dd` is ink, `min-w-0 break-words pr-1`. Used for cover metadata, profile facts, contact facts, and the empty-Lavori status block.
+Props: `{ rows: [string, string][]; className?: string }`. A technical drawing's title-block: a `<dl>` in Geist Mono `0.72rem`, tracking 0.04em, muted. Each row is `flex gap-5`, `border-b border-hairline`, `px-0.5 py-3` (last row loses its border). `dt` is uppercase graphite, `w-20 sm:w-24 shrink-0`; `dd` is ink, `min-w-0 break-words pr-1`. Used for cover metadata, profile facts, and contact facts — in Profilo and Contatto it is the right-column block at `col-span-4 col-start-9`.
 
 ### Plate Frame (`PlateFrame`)
 Props: `{ src?: string; alt?: string; caption: string; ratio?: string ("4 / 5"); reserved?: boolean }`. A framed image slot. Box is `overflow-hidden border` at `aspect-ratio: ratio`; border is solid ink normally, **dashed hairline-strong when `reserved`**. With `src`, renders a `next/image` `fill object-cover`; without, a placeholder filled `color-mix(in srgb, var(--color-graphite) 5%, var(--color-paper))` with a centred mono uppercase word — "riservato" when `reserved`, "da inserire" otherwise. `Ticks` overlay the frame. A mono uppercase caption (0.68rem, muted) sits below.
@@ -253,8 +253,8 @@ Props: `{ size?: "sm" | "lg" }`. The one live element and the only primary actio
 ### Arrow (`Arrow`)
 Props: `{ className?: string ("size-[1em]") }`. Authored SVG arrow, `stroke-width: 1.8`, round caps/joins, `currentColor` — the same stroke system as the Instagram icon. Used inside the email block, inline email links, and project links.
 
-### Project List (`ProjectList`)
-Props: `{ progetti: Progetto[] }`. Renders only when `progetti` is non-empty (otherwise the Lavori section shows its curated empty state: a `broken` section rule, a status `SpecList`, and three `reserved` plate frames). An `<ol>` with `gap-px bg-hairline` so a 1px line separates rows; each `<li>` is `bg-paper`, `sm:grid-cols-5`, holding a `PlateFrame` (`col-span-2`) and a text column (`col-span-3`) with a mono index, a title, a body paragraph, a mono `anno · ruolo · stack` line, and — if `p.url` — a cobalt underlined "Vedi il progetto" link with an `Arrow`.
+### Project List (`ProjectList`) — dormant
+Props: `{ progetti: Progetto[] }`. **Not currently mounted.** The "Lavori" section was removed from the page on 2026-09-10 pending real project content, and its curated empty state went with it (a `broken` section rule, a status `SpecList`, three `reserved` plate frames). `ProjectList` and `src/lib/projects.ts` (the `progetti` array, the `Progetto` type) are kept in the codebase as the re-entry point. When the section returns, `ProjectList` renders an `<ol>` with `gap-px bg-hairline` so a 1px line separates rows; each `<li>` is `bg-paper`, `sm:grid-cols-5`, holding a `PlateFrame` (`col-span-2`) and a text column (`col-span-3`) with a mono index, a title, a body paragraph, a mono `anno · ruolo · stack` line, and — if `p.url` — a cobalt underlined "Vedi il progetto" link with an `Arrow`.
 
 ### Navigation
 The Index Rail is the only navigation. There is no separate header or footer nav. The colophon `footer` (ink top border, `manual-shell`, `py-8`) holds a mono cobalt `mailto:` link with an `Arrow`, then a mono uppercase revision line (`© 2026 Matteo Palermo` / `Manuale — rev. 2026 · v1` / `Caravaggio (BG), Italia`).

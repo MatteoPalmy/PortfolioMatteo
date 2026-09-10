@@ -7,8 +7,7 @@ type Entry = { id: string; n: string; label: string };
 const ENTRIES: Entry[] = [
   { id: "profilo", n: "01", label: "Profilo" },
   { id: "competenze", n: "02", label: "Competenze" },
-  { id: "lavori", n: "03", label: "Lavori" },
-  { id: "contatto", n: "04", label: "Contatto" },
+  { id: "contatto", n: "03", label: "Contatto" },
 ];
 
 /** Indice del manuale: barra fissa in alto, ancore linkabili, stato attivo pieno. */

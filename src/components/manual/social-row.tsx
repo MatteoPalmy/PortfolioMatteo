@@ -43,8 +43,16 @@ const SOCIALS = [
     Icon: InstagramIcon,
     href: "https://www.instagram.com/matteopalermoo/",
   },
-  { label: "YouTube", Icon: YoutubeIcon, href: "#" },
-  { label: "TikTok", Icon: TiktokIcon, href: "#" },
+  {
+    label: "YouTube",
+    Icon: YoutubeIcon,
+    href: "https://www.youtube.com/channel/UCFkoFdBYQBJZzzJt3kP7j7Q",
+  },
+  {
+    label: "TikTok",
+    Icon: TiktokIcon,
+    href: "https://www.tiktok.com/@matteoopalermoo",
+  },
 ];
 
 export function SocialRow({ className = "" }: { className?: string }) {

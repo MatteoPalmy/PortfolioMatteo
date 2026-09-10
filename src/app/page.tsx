@@ -1,9 +1,6 @@
-import { progetti } from "@/lib/projects";
 import { EmailBlock } from "@/components/manual/email-block";
 import { GridOverlay } from "@/components/manual/grid-overlay";
 import { IndexRail } from "@/components/manual/index-rail";
-import { PlateFrame } from "@/components/manual/plate-frame";
-import { ProjectList } from "@/components/manual/project-list";
 import { Section } from "@/components/manual/section";
 import { SocialRow } from "@/components/manual/social-row";
 import { SpecList } from "@/components/manual/spec-list";
@@ -110,18 +107,16 @@ export default function Home() {
               stessa persona che scrive il codice. Tratto ogni progetto come
               qualcosa da rifinire, non solo da consegnare.
             </p>
+          </div>
+
+          <div className="sm:col-span-4 sm:col-start-9">
             <SpecList
-              className="mt-8 max-w-sm"
               rows={[
                 ["Attivo", "dal 2026"],
                 ["Sede", "Caravaggio (BG)"],
                 ["Lingue", "Italiano, Inglese"],
               ]}
             />
-          </div>
-
-          <div className="sm:col-span-4 sm:col-start-9">
-            <PlateFrame caption="Ritratto · 4:5 · da inserire" ratio="4 / 5" />
           </div>
         </div>
       </Section>
@@ -163,48 +158,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ------------------------------------------------------------- Lavori */}
-      <Section
-        id="lavori"
-        n="03"
-        title="Lavori"
-        broken={progetti.length === 0}
-      >
-        {progetti.length === 0 ? (
-          <div className="grid gap-10 sm:grid-cols-12">
-            <div className="sm:col-span-6">
-              <p className="max-w-[52ch] text-[1.05rem] leading-relaxed text-[var(--color-ink)]">
-                Progetti selezionati in preparazione. Nel frattempo, il modo più
-                rapido per capire come lavoro è scrivermi: rispondo con esempi
-                pertinenti a ciò che devi costruire.
-              </p>
-              <SpecList
-                className="mt-6 max-w-xs"
-                rows={[
-                  ["Stato", "in aggiornamento"],
-                  ["Rev.", "2026"],
-                  ["Slot", "03 riservati"],
-                ]}
-              />
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:col-span-6 sm:grid-cols-3 sm:gap-3">
-              {["01", "02", "03"].map((n) => (
-                <PlateFrame
-                  key={n}
-                  reserved
-                  caption={`Progetto ${n}`}
-                  ratio="4 / 3"
-                />
-              ))}
-            </div>
-          </div>
-        ) : (
-          <ProjectList progetti={progetti} />
-        )}
-      </Section>
-
       {/* ----------------------------------------------------------- Contatto */}
-      <Section id="contatto" n="04" title="Contatto">
+      <Section id="contatto" n="03" title="Contatto">
         <div className="grid gap-10 sm:grid-cols-12">
           <div className="sm:col-span-7">
             <p className="max-w-[46ch] text-[1.05rem] leading-relaxed text-[var(--color-ink)]">
@@ -214,11 +169,8 @@ export default function Home() {
             <div className="mt-6">
               <EmailBlock size="lg" />
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
+            <div className="mt-6">
               <SocialRow />
-              <span className="text-[0.7rem] uppercase tracking-[0.16em] text-[var(--color-muted)]">
-                YouTube / TikTok in arrivo
-              </span>
             </div>
           </div>
           <div className="sm:col-span-4 sm:col-start-9">

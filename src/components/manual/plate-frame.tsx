@@ -3,8 +3,9 @@ import { Ticks } from "./ticks";
 
 /**
  * Riquadro "tavola": mostra un'immagine se presente, altrimenti un segnaposto
- * con segni di taglio e didascalia mono. Usato per il ritratto e per gli slot
- * dei lavori non ancora inseriti.
+ * con segni di taglio e didascalia mono. Usato dagli slot dei lavori in
+ * <ProjectList>. Al momento nessuna sezione monta questo componente (Lavori
+ * rimossa, ritratto non presente); resta nel design system per il ripristino.
  */
 export function PlateFrame({
   src,
